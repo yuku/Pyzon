@@ -41,8 +41,6 @@ class Pyzon:
     _proxy_host = None
     # Proxy port
     _proxy_port = None
-    # Errors
-    _errors = []
     
     def __init__(self, access_key_id, secret_access_key, associate_tag=None):
         """Constructor
@@ -116,11 +114,6 @@ class Pyzon:
         """
         self._proxy_host = host
         self._proxy_port = port
-
-    def getRawResult(self):
-        """Retrieves the raw result
-        """
-        return self._raw_result
 
     def BrowseNodeLookup(self, browsenode_id, **options):
         """Retrieves information about a browse node
