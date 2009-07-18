@@ -344,7 +344,7 @@ class Pyzon:
         hmac_digest = hmac.new(self._secret_access_key, string_to_sign, hashlib.sha256).digest()
         base64_encoded = base64.b64encode(hmac_digest)
         signature = urllib2.quote(base64_encoded)
-        url = "http://%s/onca/xml?%s" % (self._urlhost, urlencoded_reqs)
+        url = "http://%s/onca/xml?%s&Signature=%s" % (self._urlhost, urlencoded_reqs, signature)
         return url
 
     def _sendHttpRequest(self, url):
