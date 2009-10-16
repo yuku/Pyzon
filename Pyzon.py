@@ -1,4 +1,4 @@
-# -*- coding:utf8 -*-
+# coding:utf8 -*-
 import urllib2
 import time
 import hashlib, hmac
@@ -337,7 +337,7 @@ class Pyzon:
         sorted_params = sorted(params.items())
         req_list = []
         for p in sorted_params:
-            pair = "%s=%s" % (p[0], urllib2.quote(p[1].encode('utf-8')))
+            pair = "%s=%s" % (p[0], urllib2.quote(str(p[1]).encode('utf-8')))
             req_list.append(pair)
         urlencoded_reqs = '&'.join(req_list)
         string_to_sign = "GET\n%s\n/onca/xml\n%s" % (self._urlhost, urlencoded_reqs)
