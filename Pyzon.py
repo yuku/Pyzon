@@ -5,8 +5,13 @@ import hashlib, hmac
 import base64
 from xml.dom import minidom
 
+__version__ = "0.1.2"
+
 class AmazonException(Exception):
     """Base class for all Amazon exceptions"""
+    pass
+
+class UnicodeEncodeException(AmazonException):
     pass
 
 class NoAccessKeyID(AmazonException): pass
@@ -211,7 +216,10 @@ class Pyzon:
         params = options
         params['Operation'] = 'ItemSearch'
         params['SearchIndex'] = search_index
-        return self._sendRequest(params)
+        try:
+            return self._sendRequest(params)
+        except UnicodeEncodeException:
+            raise UnicodeEncodeException
 
     def ListLookup(self, list_type, list_id, **options):
         """Retrieves products in a specific list
@@ -337,7 +345,10 @@ class Pyzon:
         sorted_params = sorted(params.items())
         req_list = []
         for p in sorted_params:
-            pair = "%s=%s" % (p[0], urllib2.quote(str(p[1]).encode('utf-8')))
+            try:
+                pair = "%s=%s" % (p[0], urllib2.quote(p[1].encode('utf-8')))
+            except UnicodeEncodeError:
+                raise UnicodeEncodeException
             req_list.append(pair)
         urlencoded_reqs = '&'.join(req_list)
         string_to_sign = "GET\n%s\n/onca/xml\n%s" % (self._urlhost, urlencoded_reqs)
@@ -361,7 +372,10 @@ class Pyzon:
     def _sendRequest(self, params):
         """Sends the request to Amazon
         """
-        url = self._buildUrl(params)
+        try:
+            url = self._buildUrl(params)
+        except UnicodeEncodeException:
+            raise UnicodeEncodeException
         result = self._sendHttpRequest(url)
         return result 
 
