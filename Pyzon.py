@@ -346,7 +346,7 @@ class Pyzon:
         req_list = []
         for p in sorted_params:
             try:
-                pair = "%s=%s" % (p[0], urllib2.quote(p[1].encode('utf-8')))
+                pair = "%s=%s" % (p[0], urllib2.quote(str(p[1]).encode('utf-8')))
             except UnicodeEncodeError:
                 raise UnicodeEncodeException
             req_list.append(pair)
