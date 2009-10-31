@@ -335,7 +335,7 @@ class Pyzon:
     def _buildUrl(self, params):
         """Builds a URL
         """
-        params['Service'] = 'AWSECommerceSerivce'
+        params['Service'] = 'AWSECommerceService'
         params['AWSAccessKeyId'] = self.getAccessKeyID()
         if self._associate_tag is not None:
             params['AssociateTag'] = self._associate_tag
