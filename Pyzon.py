@@ -5,7 +5,7 @@ import hashlib, hmac
 import base64
 from xml.dom import minidom
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 class AmazonException(Exception):
     """Base class for all Amazon exceptions"""
@@ -57,7 +57,7 @@ class Pyzon:
     def getApiVersion(self):
         """Retrieves the current version of this classes API
         """
-        return '0.0.1'
+        return __version__
 
     def setAccessKeyID(self, access_key_id):
         """Sets an Access Key ID 
