@@ -27,7 +27,7 @@ __supportedLocales = {
     'CA': 'ecs.amazonaws.cs',
 } 
 
-class Pyzon:
+class Pyzon(object):
     # An Amazon Access Key ID used when quering Amazon servers
     _access_key_id = None
     # An Amazon Secret Acceess Key used when querying Amazon servers
@@ -299,7 +299,7 @@ class Pyzon:
         """Retrieves information about a car part
         """
         params = options
-        parms['Operation'] = 'VehiclePartLookup'
+        params['Operation'] = 'VehiclePartLookup'
         return self._sendRequest(params)
 
     def VehiclePartSearch(self, make_id, model_id, year, **options):
