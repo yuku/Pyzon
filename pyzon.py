@@ -3,7 +3,6 @@ import urllib2
 import time
 import hashlib, hmac
 import base64
-from xml.dom import minidom
 
 __version__ = "0.1.4"
 
@@ -37,7 +36,7 @@ class Pyzon(object):
     # A base URL used to build the query for the Amazon servers
     _urlhost = 'ecs.amazonaws.jp'
     # A service version
-    _version = '2009-03-31'
+    _version = '2011-08-01'
     # The time that the Amazon took to process the request
     _processing_time = None
     # The raw result returned from the request
