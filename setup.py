@@ -1,8 +1,9 @@
 from distutils.core import setup
+import pyzon
 
 setup(
-    name='PyZon',
-    version='1.0',
+    name='Pyzon',
+    version=pyzon.__version__,
     py_modules=['pyzon'],
 )
 
