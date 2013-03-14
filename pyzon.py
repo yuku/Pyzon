@@ -3,6 +3,7 @@ import urllib2
 import time
 import hashlib, hmac
 import base64
+import todict
 
 __version__ = "0.1.4"
 
@@ -376,5 +377,5 @@ class Pyzon(object):
         except UnicodeEncodeException:
             raise UnicodeEncodeException
         result = self._sendHttpRequest(url)
-        return result 
+        return todict.todict(result);
 
