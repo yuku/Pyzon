@@ -379,9 +379,3 @@ class Pyzon(object):
         result = self._sendHttpRequest(url)
         return todict.todict(result);
 
-if __name__ == '__main__':
-    import pit
-    t = pit.Pit.get("amazon");
-    p = Pyzon(t["key"], t["secret"], "higumachan-22");
-    print p.ItemSearch("All", Keywords=u"撫子");
-
